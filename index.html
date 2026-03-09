@@ -333,15 +333,15 @@
                 const targetY = getTerrainHeight(this.mesh.position.x, this.mesh.position.z) + 6 + Math.sin(performance.now()*0.002)*2;
                 this.mesh.position.y = THREE.MathUtils.lerp(this.mesh.position.y, targetY, 0.05);
                 const dir = new THREE.Vector3().subVectors(camera.position, this.mesh.position).normalize();
-                this.mesh.position.addScaledVector(dir, 12 * delta);
-                if (performance.now() - this.lastShot > 1800) {
+                this.mesh.position.addScaledVector(dir, 5 * delta);
+                if (performance.now() - this.lastShot > 2200) {
                     this.shoot();
                     this.lastShot = performance.now();
                 }
             }
             shoot() {
                 createLaser(this.mesh.position.clone(), camera.position.clone(), 0xff0000);
-                updateHP(-15);
+                updateHP(-11);
             }
             takeDamage(amount, isCrit) {
                 this.hp -= amount;
